@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Author, Book
+from .models import Author, Book, LibraryUser
 
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -9,5 +9,9 @@ class AuthorSerializer(serializers.HyperlinkedModelSerializer):
 class BookSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Book
-        fields = ['title', 'author', 'is_available', 'release_date']
+        fields = ['title', 'author', 'is_available', 'release_date', 'borrowed_by']
 
+class LibraryUserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = LibraryUser
+        fields = ['first_name', 'last_name']

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Author, Book
-from .serializers import AuthorSerializer, BookSerializer
+from .models import Author, Book, LibraryUser
+from .serializers import AuthorSerializer, BookSerializer, LibraryUserSerializer
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
@@ -20,3 +20,9 @@ class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
+class LibraryUserViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    queryset = LibraryUser.objects.all()
+    serializer_class = LibraryUserSerializer
