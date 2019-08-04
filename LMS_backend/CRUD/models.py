@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 class Author(models.Model):
@@ -11,6 +12,8 @@ class Author(models.Model):
 class Book(models.Model):
     title = models.TextField(max_length=255)
     author = models.ManyToManyField(Author)
+    is_available = models.BooleanField(default=False)
+    release_date = models.DateField(default=datetime.date.today)
 
     def __str__(self):
         return self.author+': '+self.title
