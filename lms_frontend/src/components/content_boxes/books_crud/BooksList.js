@@ -12,6 +12,9 @@ const IsAvailable = (props) => {
 
 }
 
+//No books alert
+const NoBooks = () => <p>No books to display</p>
+
 class BooksList extends React.Component {
     state = {
         books: []
@@ -28,11 +31,13 @@ class BooksList extends React.Component {
             const books = res.data
             this.setState({ books })
         })
+        console.log(this.state.books)
     }
 
-    render() {
 
-        return (
+    render() {
+        if(this.state.books.length!=0) {
+                return (
         <>
         <h1>Books</h1>
             { this.state.books.map(book => {
@@ -56,6 +61,11 @@ class BooksList extends React.Component {
         </>
 
         )
+        }
+        else {
+            return <NoBooks />
+        }
+
 
 
 
