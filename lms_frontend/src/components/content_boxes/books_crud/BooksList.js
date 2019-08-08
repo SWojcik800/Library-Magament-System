@@ -46,16 +46,16 @@ class BooksList extends React.Component {
         <h1>Books</h1>
             { this.state.books.map(book => {
             return(
-                   <div className="row" >
+                   <div className="row" key={book.pk}>
                     <div className="col s12 m6">
-                      <div className="card blue-grey darken-1" key={book.pk}>
+                      <div className="card blue-grey darken-1">
                         <div className="card-content white-text">
                           <span className="card-title">{book.title}</span>
                           <p>Author: {book.author}</p>
                            <IsAvailable props={book.borrowed_by} />
                         </div>
                         <div className="card-action">
-                          <Link to = {this.api_url+book.pk+'?format=json'} >Detail</Link>
+                          <Link to = {'books/'+book.pk} >Detail</Link>
                         </div>
                       </div>
                     </div>
