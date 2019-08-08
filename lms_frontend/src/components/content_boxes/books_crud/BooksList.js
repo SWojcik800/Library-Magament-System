@@ -1,6 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 
+import {
+  Link
+} from 'react-router-dom';
+
 //Book is_available component
 const IsAvailable = (props) => {
     if(props) {
@@ -31,27 +35,27 @@ class BooksList extends React.Component {
             const books = res.data
             this.setState({ books })
         })
-        console.log(this.state.books)
+
     }
 
 
     render() {
-        if(this.state.books.length!=0) {
+        if(this.state.books.length!==0) {
                 return (
         <>
         <h1>Books</h1>
             { this.state.books.map(book => {
             return(
-                   <div className="row">
+                   <div className="row" >
                     <div className="col s12 m6">
-                      <div className="card blue-grey darken-1">
+                      <div className="card blue-grey darken-1" key={book.pk}>
                         <div className="card-content white-text">
                           <span className="card-title">{book.title}</span>
                           <p>Author: {book.author}</p>
                            <IsAvailable props={book.borrowed_by} />
                         </div>
                         <div className="card-action">
-                          <a href={this.api_url+book.pk+'?format=json'}>Detail</a>
+                          <Link to = {this.api_url+book.pk+'?format=json'} >Detail</Link>
                         </div>
                       </div>
                     </div>
