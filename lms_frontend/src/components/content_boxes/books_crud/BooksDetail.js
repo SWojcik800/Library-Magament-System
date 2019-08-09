@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import BooksDelete from './BooksDelete'
 
 const IsAvailable = (props) => {
     if(props) {
@@ -39,7 +40,9 @@ state = {
                 <p>Author: {this.state.book.borrowed_by}</p>
                 <p>Release Date: {this.state.book.release_date}</p>
                 <IsAvailable props={this.state.book.is_available} />
+                <BooksDelete url={this.state.book.pk} />
             </div>
+
             )
     }
     else {
