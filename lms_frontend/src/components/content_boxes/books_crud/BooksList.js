@@ -44,24 +44,27 @@ class BooksList extends React.Component {
                 return (
         <>
         <h1>Books</h1>
+        <hr/>
+        <div className="row" >
             { this.state.books.map(book => {
             return(
-                   <div className="row" key={book.pk}>
-                    <div className="col s12 m6">
-                      <div className="card blue-grey darken-1">
+
+                    <div className="col s12 m4" key={book.pk}>
+                      <div className="card #3d5afe indigo accent-3">
                         <div className="card-content white-text">
                           <span className="card-title">{book.title}</span>
                           <p>Author: {book.author}</p>
                            <IsAvailable props={book.borrowed_by} />
                         </div>
                         <div className="card-action">
-                          <Link to = {'books/'+book.pk} >Detail</Link>
+                          <Link to = {'books/'+book.pk} className="waves-effect waves-light #8c9eff indigo accent-1 btn">Detail</Link>
                         </div>
                       </div>
                     </div>
-                  </div>
+
             )
             })}
+            </div>
         </>
 
         )
@@ -77,7 +80,7 @@ class BooksList extends React.Component {
 
 
 }
-  
+
 
 
 

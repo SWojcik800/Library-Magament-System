@@ -27,7 +27,6 @@ state = {
             const book = res.data
             this.setState({ book })
             })
-
         }
 
 
@@ -36,11 +35,14 @@ state = {
     if(this.state.book.length!==0) {
         return(
             <div>
-                <h1>{this.state.book.title}</h1>
-                <p>Author: {this.state.book.borrowed_by}</p>
-                <p>Release Date: {this.state.book.release_date}</p>
+                <h1><b>{this.state.book.title}</b></h1>
+                <hr/>
+                <p>
+                Author: {this.state.book.borrowed_by}
+                Release Date: {this.state.book.release_date}
                 <IsAvailable props={this.state.book.is_available} />
                 <BooksDelete url={this.state.book.pk} />
+                </p>
             </div>
 
             )

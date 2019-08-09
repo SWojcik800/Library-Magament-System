@@ -11,7 +11,7 @@ import BooksDetail from './books_crud/BooksDetail.js'
 
 
 const Content = () => (
-	<div className="container">
+	<main className="container">
 
 			  <Route exact path="/" component={Home} />
 			  <Route path="/about_us" component={About} />
@@ -19,9 +19,9 @@ const Content = () => (
 			  <Route exact path="/books" component={BooksList} />
 			  <Route path="/books/:pk" component={BooksDetail} />
 
-	  </div>
+	  </main>
 )
-  
+
 
 
 
