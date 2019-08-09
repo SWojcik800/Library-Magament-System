@@ -5,6 +5,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
+import { Modal, Button } from 'react-materialize';
 
 class BooksDelete extends React.Component {
 state = {
@@ -30,8 +31,14 @@ state = {
         )
        }
        else {
+       const trigger = <Button className="btn waves-effect waves-light red lighten-2">Delete</Button>
         return (
-            <button className="btn waves-effect waves-light red lighten-2" onClick={this.handleClick}>Delete</button>
+        <>
+            <Modal header="Modal Header" trigger={trigger}>
+            <p>Are you sure, you want to delete this book?</p>
+                <button className="btn waves-effect waves-light red lighten-2" onClick={this.handleClick}>Delete</button>
+            </Modal>
+        </>
         )
        }
 
