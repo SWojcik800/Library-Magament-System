@@ -7,6 +7,7 @@ import About from './sites/About.js'
 import Contact from './sites/Contact.js'
 import BooksList from './books_crud/BooksList.js'
 import BooksDetail from './books_crud/BooksDetail.js'
+import BooksCreate from './books_crud/BooksCreate.js'
 
 
 
@@ -18,6 +19,7 @@ const Content = () => (
 			  <Route path="/contact" component={Contact} />
 			  <Route exact path="/books" component={BooksList} />
 			  <Route path="/books/:pk" component={BooksDetail} />
+        <Route path="/create" component={BooksCreate} />
 
 	  </main>
 )

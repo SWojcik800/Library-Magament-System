@@ -10,7 +10,10 @@ import Content from './content_boxes/Content.js'
 const App = () => (
 		 <Router>
 			  <Navbar />
+        <br />
 			  <Content />
+        <br /><br />
+        <br /><br />
 			  <Footer />
 		  </Router>
 )
