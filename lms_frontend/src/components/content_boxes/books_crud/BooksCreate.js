@@ -19,23 +19,50 @@ class BooksCreate extends React.Component {
       this.state = {
         title: "title",
         author: ["http://localhost:8000/authors/1/"],
-        is_available: false,
-        release_date: "2019-08-09",
         borrowed_by: null
       }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    componentDidMount() {
-       //API Url
+
+    handleChange(event) {
+        const target = event.target
+        const name = target.name
+        const value = target.value
+        this.setState({
+        [name]: value
+        })
+
+     }
+
+    handleSubmit(event) {
+       event.preventDefault()
+       console.log(this.state)
+         //POST request
        const books_api_url = 'http://localhost:8000/books/'
-       //POST request
        axios.post(books_api_url, this.state)
        .then(res => {console.log(res)})
+    }
+
+
+    componentDidMount() {
+       //API Url
+
      }
 
 
     render() {
       return(
-          <>Test</>
+          <>
+          <h1>Add Book</h1>
+          <hr />
+            <form onSubmit={this.handleSubmit} >
+                <input type="text" name="title" placeholder="Title" onChange={this.handleChange} />
+                <input type="text" name="author" placeholder="Author" onChange={this.handleChange} />
+                <input type="text" name="borrowed_by" placeholder="Borrowed by" onChange={this.handleChange} />
+                <input type="submit" value="Submit" />
+            </form>
+          </>
 
       )
 

@@ -22,7 +22,7 @@ state = {
        const api_format = '/?format=json'
        const pk = this.props.match.params.pk
 
-       const response = axios.get(api_url+pk+api_format)
+       axios.get(api_url+pk+api_format)
        .then(res => {
             const book = res.data
             this.setState({ book })
@@ -35,20 +35,22 @@ state = {
     if(this.state.book.length!==0) {
         return(
             <div>
-                <h1><b>{this.state.book.title}</b></h1>
+                <h1>{this.state.book.title}</h1>
                 <hr/>
-                <p>
-                Author: {this.state.book.borrowed_by}
-                Release Date: {this.state.book.release_date}
-                <IsAvailable props={this.state.book.is_available} />
+
+                Author: {this.state.book.author}
+                <IsAvailable props={this.state.book.borrowed_by} />
                 <BooksDelete url={this.state.book.pk} />
-                </p>
             </div>
 
             )
     }
     else {
-        return <h1>That book does not exist</h1>
+        return (
+            <>
+            That book does not exist
+            </>
+        )
     }
 
 
