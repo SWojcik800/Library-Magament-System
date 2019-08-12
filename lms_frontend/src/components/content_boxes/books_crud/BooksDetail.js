@@ -1,6 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import BooksDelete from './BooksDelete'
+import {
+  Link
+} from 'react-router-dom';
 
 const IsAvailable = (props) => {
     if(props) {
@@ -11,11 +14,19 @@ const IsAvailable = (props) => {
     }
 
 }
+const BookUpdateButton = (pk) => {
+    return <Link to={pk.pk+'/update'} className="waves-effect waves-light btn">Update</Link>
+}
 
 class BooksDetail extends React.Component {
 state = {
     book: []
 }
+    constructor(props) {
+        super(props)
+        const pk = this.props.match.params.pk
+        this.pk = pk
+    }
     componentDidMount() {
        //API Url
        const api_url = 'http://localhost:8000/books/'
@@ -40,7 +51,9 @@ state = {
 
                 Author: {this.state.book.author}
                 <IsAvailable props={this.state.book.borrowed_by} />
-                <BooksDelete url={this.state.book.pk} />
+                <BooksDelete url={this.pk} />
+                 &nbsp;
+                <BookUpdateButton pk={this.pk} />
             </div>
 
             )

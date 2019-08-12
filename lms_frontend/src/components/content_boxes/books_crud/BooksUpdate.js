@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import GoToHomepage from '../utils/GoToHomepage.js'
 
 class BooksUpdate extends React.Component {
 
@@ -20,9 +21,7 @@ class BooksUpdate extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-
-
-        const book = axios.get(api_url+pk+api_format)
+        axios.get(api_url+pk+api_format)
         .then(res => {
              const book = res.data
              this.setState({ book })
@@ -52,23 +51,18 @@ class BooksUpdate extends React.Component {
        .then(res => {console.log(res)})
     }
 
-
-    componentDidMount() {
-       //API Url
-
-     }
-
-
     render() {
       return(
           <>
-          <h1>Add Book</h1>
+          <h1>Update book</h1>
           <hr />
             <form onSubmit={this.handleSubmit} >
                 <input type="text" name="title" placeholder="Title" onChange={this.handleChange} />
                 <input type="text" name="author" placeholder="Author" onChange={this.handleChange} />
                 <input type="text" name="borrowed_by" placeholder="Borrowed by" onChange={this.handleChange} />
-                <input type="submit" value="Submit" />
+                <button type="submit" className="waves-effect waves-light btn">Update</button>
+                &nbsp;
+                <GoToHomepage />
             </form>
           </>
 

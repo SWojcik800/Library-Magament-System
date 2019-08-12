@@ -9,6 +9,7 @@ import BooksList from './books_crud/BooksList.js'
 import BooksDetail from './books_crud/BooksDetail.js'
 import BooksCreate from './books_crud/BooksCreate.js'
 import BooksUpdate from './books_crud/BooksUpdate.js'
+import Login from './auth/Login.js'
 
 
 
@@ -22,6 +23,7 @@ const Content = () => (
 			  <Route exact path="/books/:pk" component={BooksDetail} />
         <Route path="/create" component={BooksCreate} />
         <Route  path="/books/:pk/update" component={BooksUpdate} />
+        <Route  path="/login" component={Login} />
 
 	  </main>
 )

@@ -34,7 +34,7 @@ state = {
        const trigger = <Button className="btn waves-effect waves-light red lighten-2">Delete</Button>
         return (
         <>
-            <Modal header="Modal Header" trigger={trigger}>
+            <Modal header="Confirm deletion" trigger={trigger}>
             <p>Are you sure, you want to delete this book?</p>
                 <button className="btn waves-effect waves-light red lighten-2" onClick={this.handleClick}>Delete</button>
             </Modal>

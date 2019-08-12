@@ -1,16 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import BooksDelete from './BooksDelete'
-
-const IsAvailable = (props) => {
-    if(props) {
-        return <p>Is available: <b>Yes</b></p>
-    }
-    else {
-        return <p>Is available: <b>No</b></p>
-    }
-
-}
+import GoToHomepage from '../utils/GoToHomepage.js'
 
 class BooksCreate extends React.Component {
 
@@ -44,13 +34,6 @@ class BooksCreate extends React.Component {
        .then(res => {console.log(res)})
     }
 
-
-    componentDidMount() {
-       //API Url
-
-     }
-
-
     render() {
       return(
           <>
@@ -60,7 +43,9 @@ class BooksCreate extends React.Component {
                 <input type="text" name="title" placeholder="Title" onChange={this.handleChange} />
                 <input type="text" name="author" placeholder="Author" onChange={this.handleChange} />
                 <input type="text" name="borrowed_by" placeholder="Borrowed by" onChange={this.handleChange} />
-                <input type="submit" value="Submit" />
+                <button type="submit" className="#4caf50 green btn" >Create</button>
+                &nbsp;
+                <GoToHomepage />
             </form>
           </>
 
