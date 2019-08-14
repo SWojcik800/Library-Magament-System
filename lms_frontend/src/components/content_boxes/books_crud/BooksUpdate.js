@@ -1,6 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 import GoToHomepage from '../utils/GoToHomepage.js'
+import {
+  Redirect
+} from 'react-router-dom';
+
 
 class BooksUpdate extends React.Component {
 
@@ -37,7 +41,6 @@ class BooksUpdate extends React.Component {
         .catch(res => {
             this.setState({ error: true })
         })
-        console.log(this.state.error)
     }
 
 
@@ -55,12 +58,13 @@ class BooksUpdate extends React.Component {
     //Submitting form data
     handleSubmit(event) {
        event.preventDefault()
-       console.log(this.state)
          //PUT request
 
-       console.log(this.api_url+this.pk)
        axios.put(this.api_url+this.pk+'/', this.state)
-       .then(res => {console.log(res)})
+       .then(set_redirect => {
+         this.setState({ redirect: true })
+       })
+
     }
 
     render() {
@@ -70,6 +74,9 @@ class BooksUpdate extends React.Component {
         )
     }
     else {
+      if(this.state.redirect) {
+        return <Redirect to='/books' />
+      }
         return(
           <>
           <h1>Update book</h1>
