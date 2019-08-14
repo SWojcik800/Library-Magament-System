@@ -61,7 +61,7 @@ state = {
     else {
         return (
             <>
-            That book does not exist
+            <h1 className="center">That book does not exist</h1>
             </>
         )
     }
