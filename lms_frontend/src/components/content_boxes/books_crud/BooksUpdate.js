@@ -82,13 +82,14 @@ class BooksUpdate extends React.Component {
           <h1>Update book</h1>
           <hr />
             <form onSubmit={this.handleSubmit} >
-                <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
-                <input type="text" name="author" value={this.state.author} onChange={this.handleChange} />
-                <input type="text" name="borrowed_by" value={this.state.borrowed_by} onChange={this.handleChange} />
+                <input type="text" name="title" className="validate" value={this.state.title} onChange={this.handleChange} />
+                <input type="text" name="author" className="validate" value={this.state.author} onChange={this.handleChange} />
+                <input type="text" name="borrowed_by" className="validate" value={this.state.borrowed_by} onChange={this.handleChange} />
                 <button type="submit" className="waves-effect waves-light btn">Update</button>
                 &nbsp;
                 <GoToHomepage />
             </form>
+            <br />
           </>
       )
     }

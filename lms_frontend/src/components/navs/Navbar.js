@@ -18,10 +18,10 @@ const Navbar = () => (
                 <Link to = "/contact" >Contact</Link>
               </li>
               <li>
-                <Link to = "/books" >Books List</Link>
+                <Link to = "/create" >Create new Book</Link>  
               </li>
               <li>
-                <Link to = "/create" >Create new Book</Link>
+                <Link to = "/books" >Books List</Link>
               </li>
             </ul>
           </div>

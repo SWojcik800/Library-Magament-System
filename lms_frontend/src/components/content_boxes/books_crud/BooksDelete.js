@@ -12,6 +12,7 @@ state = {
     redirect: false
 }
 
+      //DELETE query
       handleClick = () => {
         const api_url = 'http://localhost:8000/books/'
         const pk = this.props.url
@@ -26,10 +27,8 @@ state = {
        const { redirect } = this.state
 
        if(redirect) {
-        return (
-            <Redirect to="/books" />
-        )
-       }
+        return <Redirect to="/books" />
+      }
        else {
        const trigger = <Button className="btn waves-effect waves-light red lighten-2">Delete</Button>
         return (

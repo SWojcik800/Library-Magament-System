@@ -62,13 +62,20 @@ class BooksCreate extends React.Component {
             <h1>Add Book</h1>
             <hr />
               <form onSubmit={this.handleSubmit} >
-                  <input type="text" name="title" placeholder="Title" onChange={this.handleChange} />
-                  <input type="text" name="author" placeholder="Author" onChange={this.handleChange} />
-                  <input type="text" name="borrowed_by" placeholder="Borrowed by" onChange={this.handleChange} />
+                  <label for="title">Title</label>
+                  <input type="text" name="title" className="validate" onChange={this.handleChange} />
+
+                  <label for="author">Author</label>
+                  <input type="text" name="author" className="validate" onChange={this.handleChange} />
+
+                  <label for="borrowed_by">Borrowed by</label>
+                  <input type="text" name="borrowed_by" className="validate" onChange={this.handleChange} />
+
                   <button type="submit" className="#4caf50 green btn" >Create</button>
                   &nbsp;
                   <GoToHomepage />
               </form>
+              <br />
             </>
 
         )

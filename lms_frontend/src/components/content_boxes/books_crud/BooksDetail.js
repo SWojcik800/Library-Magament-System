@@ -27,23 +27,42 @@ state = {
         const pk = this.props.match.params.pk
         this.pk = pk
     }
-    componentDidMount() {
-       //API Url
-       const api_url = 'http://localhost:8000/books/'
-       const api_format = '/?format=json'
-       const pk = this.props.match.params.pk
 
-       axios.get(api_url+pk+api_format)
-       .then(res => {
-            const book = res.data
-            this.setState({ book })
-            })
+    getBookDetail = async () => {
+      //API Url
+      const api_url = 'http://localhost:8000/books/'
+      const api_format = '/?format=json'
+      const pk = this.props.match.params.pk
+
+      await axios.get(api_url+pk+api_format)
+      .then(res => {
+           const book = res.data
+           this.setState({ book })
+           })
+      .then(isLoaded => {
+        this.setState({ is_loaded: true })
+      })
+      .catch(setError => {
+        this.setState({ error: true })
+      })
+    }
+
+    componentWillMount() {
+        this.getBookDetail()
         }
 
 
     render() {
 
-    if(this.state.book.length!==0) {
+    if(this.state.error) {
+      return (
+          <>
+          <h1 className="center">That book does not exist</h1>
+          </>
+      )
+    }
+    else {
+      if(this.state.is_loaded) {
         return(
             <div>
                 <h1>{this.state.book.title}</h1>
@@ -56,15 +75,15 @@ state = {
                 <BookUpdateButton pk={this.pk} />
             </div>
 
-            )
+
+          )
+      }
+      else {
+        return <h1>Loading book...</h1>
+      }
+
     }
-    else {
-        return (
-            <>
-            <h1 className="center">That book does not exist</h1>
-            </>
-        )
-    }
+
 
 
 

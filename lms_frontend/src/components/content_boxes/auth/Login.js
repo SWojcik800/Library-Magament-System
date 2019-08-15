@@ -43,6 +43,7 @@ class Login extends React.Component {
                 <input type="password" name="password" placeholder="Password" onChange={this.handleChange} />
                 <button type="submit" className="waves-effect waves-light btn">Log in</button>
             </form>
+            <br/>
           </>
 
       )
