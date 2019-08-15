@@ -11,7 +11,6 @@ class BooksCreate extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
-        title: "title",
         author: ["http://localhost:8000/authors/1/"],
         borrowed_by: null
       }
