@@ -34,7 +34,14 @@ state = {
       const api_format = '/?format=json'
       const pk = this.props.match.params.pk
 
-      await axios.get(api_url+pk+api_format)
+      await axios.get(api_url+pk+api_format,
+        {
+       headers: {
+            //Authorization: 'Token '+this.props.token
+            Authorization: 'Token 835d33ffe2959306518c6c37676c652abef4a317'
+            }
+         },
+      )
       .then(res => {
            const book = res.data
            this.setState({ book })

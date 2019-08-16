@@ -33,7 +33,15 @@ class BooksCreate extends React.Component {
        console.log(this.state)
          //POST request
        const books_api_url = 'http://localhost:8000/books/'
-       axios.post(books_api_url, this.state)
+       console.log(this.props.token)
+       axios.post(books_api_url, this.state,
+       {
+       headers: {
+            Authorization: 'Token '+this.props.token
+            }
+         },
+
+       )
        .then(res => {
          console.log(res)
          const pk = res.data.pk

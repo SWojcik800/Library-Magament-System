@@ -33,7 +33,13 @@ class BooksUpdate extends React.Component {
     //Loading form placeholders
     LoadFormDefaultValues = async () => {
 
-      await axios.get(this.api_url+this.pk+this.api_format)
+      await axios.get(this.api_url+this.pk+this.api_format,
+          {
+       headers: {
+            Authorization: 'Token 835d33ffe2959306518c6c37676c652abef4a317'
+            }
+         }
+      )
         .then(res => {
             const data  = res.data
             this.setState(data)
@@ -60,7 +66,13 @@ class BooksUpdate extends React.Component {
        event.preventDefault()
          //PUT request
 
-       axios.put(this.api_url+this.pk+'/', this.state)
+       axios.put(this.api_url+this.pk+'/', this.state,
+         {
+         headers: {
+            Authorization: 'Token 835d33ffe2959306518c6c37676c652abef4a317'
+            }
+         }
+       )
        .then(set_redirect => {
          this.setState({ redirect: true })
        })

@@ -33,9 +33,13 @@ class BooksList extends React.Component {
 
       //Getting books list from API
     getAllBooks = async () => {
-
-     await axios.get(this.api_url+'?format=json')
+      console.log(this.props.token)
+     await axios.get(this.api_url+'?format=json', {headers: {
+        Authorization: 'Token '+this.props.token
+     }}
+     )
       .then(res => {
+          console.log(res)
           const books = res.data
           this.setState({ books })
       })
@@ -44,6 +48,7 @@ class BooksList extends React.Component {
       })
       .catch(setError => {
         this.setState({ error: true })
+        console.log(setError)
       })
     }
 

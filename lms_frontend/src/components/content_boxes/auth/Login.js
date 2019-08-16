@@ -1,5 +1,8 @@
 import React from 'react'
 import axios from 'axios'
+import {
+  Redirect
+} from 'react-router-dom';
 
 class Login extends React.Component {
 
@@ -7,10 +10,20 @@ class Login extends React.Component {
       super(props)
       this.state = {
         username: "",
-        password: ""
+        password: "",
       }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+    }
+
+    ReturnToken() {
+        if(this.state.token) {
+        this.props.sendDataToParent(this.state.token)
+        }
+        else {
+        return(null)
+        }
     }
 
     handleChange(event) {
@@ -23,18 +36,29 @@ class Login extends React.Component {
 
      }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
        event.preventDefault()
        console.log(this.state)
 
          //Login POST request
-       const login_url = 'http://localhost:8000/login'
-       axios.post(login_url, this.state)
-       .then(res => {console.log(res)})
+       const login_url = 'http://localhost:8000/api-token-auth/'
+       await axios.post(login_url, this.state)
+       .then(res => {
+       //console.log(res)
+       const token = res.data.token
+       this.setState({ token })
+       })
+       console.log(this.state)
+       this.ReturnToken()
+
     }
 
     render() {
-      return(
+    if(this.props.isAuthenticated) {
+        return(<Redirect to="/books" />)
+    }
+    else {
+        return(
           <>
           <h1>Log in</h1>
           <hr />
@@ -47,6 +71,8 @@ class Login extends React.Component {
           </>
 
       )
+    }
+
 
 
 
