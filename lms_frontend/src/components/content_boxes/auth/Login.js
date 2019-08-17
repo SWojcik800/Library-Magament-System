@@ -11,6 +11,7 @@ class Login extends React.Component {
       this.state = {
         username: "",
         password: "",
+        error: null
       }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +20,7 @@ class Login extends React.Component {
 
     ReturnToken() {
         if(this.state.token) {
-        this.props.sendDataToParent(this.state.token)
+        this.props.parent_callback(this.state.token)
         }
         else {
         return(null)
@@ -44,10 +45,10 @@ class Login extends React.Component {
        const login_url = 'http://localhost:8000/api-token-auth/'
        await axios.post(login_url, this.state)
        .then(res => {
-       //console.log(res)
        const token = res.data.token
        this.setState({ token })
        })
+       .catch(() => this.setState({ error: 'Invalid credentials' }))
        console.log(this.state)
        this.ReturnToken()
 
@@ -67,6 +68,7 @@ class Login extends React.Component {
                 <input type="password" name="password" placeholder="Password" onChange={this.handleChange} />
                 <button type="submit" className="waves-effect waves-light btn">Log in</button>
             </form>
+            {this.state.error}
             <br/>
           </>
 
