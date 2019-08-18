@@ -13,18 +13,10 @@ class Login extends React.Component {
         password: "",
         error: null
       }
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-    }
-
-    ReturnToken() {
-        if(this.state.token) {
-        this.props.parent_callback(this.state.token)
-        }
-        else {
-        return(null)
-        }
     }
 
     handleChange(event) {
@@ -46,19 +38,22 @@ class Login extends React.Component {
        await axios.post(login_url, this.state)
        .then(res => {
        const token = res.data.token
-       this.setState({ token })
+       sessionStorage.setItem('token', token)
+       this.setState({is_authenticated: true})
        })
        .catch(() => this.setState({ error: 'Invalid credentials' }))
        console.log(this.state)
-       this.ReturnToken()
 
     }
+
+
 
     render() {
-    if(this.props.isAuthenticated) {
+    if(sessionStorage.getItem('token')) {
+
         return(<Redirect to="/books" />)
     }
-    else {
+    else{
         return(
           <>
           <h1>Log in</h1>
@@ -74,10 +69,6 @@ class Login extends React.Component {
 
       )
     }
-
-
-
-
 
 
     }

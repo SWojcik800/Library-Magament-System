@@ -1,6 +1,7 @@
 import React from 'react'
 import {
-  Route
+  Route,
+  Redirect, Switch
 } from 'react-router-dom';
 import Home from './sites/Home.js'
 import About from './sites/About.js'
@@ -10,6 +11,24 @@ import BooksDetail from './books_crud/BooksDetail.js'
 import BooksCreate from './books_crud/BooksCreate.js'
 import BooksUpdate from './books_crud/BooksUpdate.js'
 
+class Error_404 extends React.Component {
+    render() {
+        return(
+        <h1>Page not found</h1>
+        )
+    }
+}
+
+class Logout extends React.Component {
+    constructor(props) {
+        super(props)
+        sessionStorage.clear()
+        this.setState({ state: this.state });
+    }
+    render() {
+        return(<Redirect to='/login' />)
+    }
+}
 
 
 class Content extends React.Component{
@@ -19,6 +38,7 @@ render() {
         return(
 
             <main className="container">
+			    <Switch>
                       <Route exact path="/" component={Home} />
                       <Route path="/about_us" component={About} />
                       <Route path="/contact" component={Contact} />
@@ -26,7 +46,9 @@ render() {
                       <Route exact path="/books/:pk" render={(props) => <BooksDetail {...props} token={this.props.token} />} />
                       <Route path="/create" render={(token) => <BooksCreate token={this.props.token} />} />
                       <Route exact path="/books/:pk/update"   render={(props) => <BooksUpdate {...props} token={this.props.token} />} />
-
+			          <Route path="/logout" component={Logout} />
+			          <Route component={Error_404} />
+			     </Switch>
              </main>
         )
 

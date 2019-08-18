@@ -1,41 +1,37 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
+
 import AuthenticatedApp from './AuthenticatedApp.js'
 import Login from './content_boxes/auth/Login.js'
-
-
 
 class App extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            token: null,
-            is_authenticated: false
+            token: null
         }
-        this.setAuthToken = this.setAuthToken.bind(this)
-    }
+       }
 
-    //Setting Authentication token
-    setAuthToken(data) {
-        this.setState({token: data})
-        if(this.state.token) {
-            this.setState({ is_authenticated: true })
-        }
-        console.log(this.state)
-    }
 
     render() {//Rendering Authenticated App form
-    if(this.state.is_authenticated) {
+    if(sessionStorage.getItem('token')) {
         return(
-            <AuthenticatedApp token={this.state.token} />
+        <Router>
+            <AuthenticatedApp token={sessionStorage.getItem('token')} />
+        </Router>
         )
 
     }//Rendering Login form
     else {
         return (
+        <Router>
         <main className="container">
-            <Login parent_callback={this.setAuthToken} />
+            <Login />
         </main>
+         </Router>
         )
     }
 
