@@ -19,7 +19,7 @@ state = {
         axios.delete(api_url+pk,
             {
             headers: {
-            Authorization: 'Token 835d33ffe2959306518c6c37676c652abef4a317'
+            Authorization: 'Token '+this.props.token
             }
          }
         )

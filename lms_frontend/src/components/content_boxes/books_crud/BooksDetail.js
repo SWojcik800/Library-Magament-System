@@ -37,8 +37,7 @@ state = {
       await axios.get(api_url+pk+api_format,
         {
        headers: {
-            //Authorization: 'Token '+this.props.token
-            Authorization: 'Token 835d33ffe2959306518c6c37676c652abef4a317'
+            Authorization: 'Token '+this.props.token
             }
          },
       )
@@ -77,7 +76,7 @@ state = {
 
                 Author: {this.state.book.author}
                 <IsAvailable props={this.state.book.borrowed_by} />
-                <BooksDelete url={this.pk} />
+                <BooksDelete url={this.pk} token={this.props.token} />
                  &nbsp;
                 <BookUpdateButton pk={this.pk} />
             </div>

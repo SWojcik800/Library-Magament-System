@@ -69,7 +69,7 @@ class BooksUpdate extends React.Component {
        axios.put(this.api_url+this.pk+'/', this.state,
          {
          headers: {
-            Authorization: 'Token 835d33ffe2959306518c6c37676c652abef4a317'
+            Authorization: 'Token '+this.props.token
             }
          }
        )

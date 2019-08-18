@@ -23,9 +23,9 @@ render() {
                       <Route path="/about_us" component={About} />
                       <Route path="/contact" component={Contact} />
                       <Route exact path="/books" render={(token) => <BooksList token={this.props.token} />} />
-                      <Route exact path="/books/:pk" component={BooksDetail} />
+                      <Route exact path="/books/:pk" render={(props) => <BooksDetail {...props} token={this.props.token} />} />
                       <Route path="/create" render={(token) => <BooksCreate token={this.props.token} />} />
-                      <Route exact path="/books/:pk/update"   component={BooksUpdate} />
+                      <Route exact path="/books/:pk/update"   render={(props) => <BooksUpdate {...props} token={this.props.token} />} />
 
              </main>
         )
