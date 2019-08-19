@@ -42,18 +42,17 @@ class Login extends React.Component {
        this.setState({is_authenticated: true})
        })
        .catch(() => this.setState({ error: 'Invalid credentials' }))
-       console.log(this.state)
+       //Updating parent component
+       this.props.parent_callback(this.state.is_authenticated)
 
     }
 
 
 
     render() {
-    if(sessionStorage.getItem('token')) {
-
-        return(<Redirect to="/books" />)
+    if(this.state.is_authenticated) {
+        return(<Redirect to='/books' />)
     }
-    else{
         return(
           <>
           <h1>Log in</h1>
@@ -68,7 +67,7 @@ class Login extends React.Component {
           </>
 
       )
-    }
+
 
 
     }

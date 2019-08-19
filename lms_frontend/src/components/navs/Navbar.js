@@ -23,6 +23,9 @@ const Navbar = () => (
               <li>
                 <Link to = "/books" >Books List</Link>
               </li>
+               <li>
+                <Link to = "/logout" >Logout</Link>
+              </li>
             </ul>
           </div>
        </nav>

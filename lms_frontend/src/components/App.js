@@ -1,26 +1,55 @@
 import React from 'react'
 import {
   BrowserRouter as Router,
+  Redirect,
+  Route
 } from 'react-router-dom';
 
 import AuthenticatedApp from './AuthenticatedApp.js'
 import Login from './content_boxes/auth/Login.js'
 
-class App extends React.Component {
+class Logout extends React.Component {
     constructor(props) {
         super(props)
+        sessionStorage.clear()
+        this.props.logout_parent_callback(false)
+    }
+    render() {
+        return(<Redirect to='/' />)
+    }
+}
 
+
+class App extends React.Component {
+
+    constructor(props) {
+        super(props)
         this.state = {
-            token: null
+            is_authenticated: false
         }
-       }
+       this.redirectToAuthenticatedApp = this.redirectToAuthenticatedApp.bind(this)
+       this.redirectToLogout = this.redirectToLogout.bind(this)
+    }
+
+    redirectToLogout(data) {
+        if(data===false) {
+            this.setState({is_authenticated: false})
+        }
+    }
+    redirectToAuthenticatedApp(data) {
+        if(data===true) {
+            console.log(data)
+            this.setState({is_authenticated: true})
+        }
+    }
 
 
     render() {//Rendering Authenticated App form
     if(sessionStorage.getItem('token')) {
         return(
         <Router>
-            <AuthenticatedApp token={sessionStorage.getItem('token')} />
+            <AuthenticatedApp token={sessionStorage.getItem('token')  } />
+            <Route exact path="/logout" render={(props) => <Logout {...props} logout_parent_callback={this.redirectToLogout} />} />
         </Router>
         )
 
@@ -29,7 +58,7 @@ class App extends React.Component {
         return (
         <Router>
         <main className="container">
-            <Login />
+            <Login parent_callback={this.redirectToAuthenticatedApp}  />
         </main>
          </Router>
         )

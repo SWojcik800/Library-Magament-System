@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   Route,
-  Redirect, Switch
+  Switch
 } from 'react-router-dom';
 import Home from './sites/Home.js'
 import About from './sites/About.js'
@@ -19,16 +19,7 @@ class Error_404 extends React.Component {
     }
 }
 
-class Logout extends React.Component {
-    constructor(props) {
-        super(props)
-        sessionStorage.clear()
-        this.setState({ state: this.state });
-    }
-    render() {
-        return(<Redirect to='/login' />)
-    }
-}
+
 
 
 class Content extends React.Component{
@@ -46,7 +37,6 @@ render() {
                       <Route exact path="/books/:pk" render={(props) => <BooksDetail {...props} token={this.props.token} />} />
                       <Route path="/create" render={(token) => <BooksCreate token={this.props.token} />} />
                       <Route exact path="/books/:pk/update"   render={(props) => <BooksUpdate {...props} token={this.props.token} />} />
-			          <Route path="/logout" component={Logout} />
 			          <Route component={Error_404} />
 			     </Switch>
              </main>
