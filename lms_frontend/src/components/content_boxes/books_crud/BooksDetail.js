@@ -4,6 +4,7 @@ import { book_detail }  from './axios_requests/books_requests.js'
 import BooksDelete from './BooksDelete'
 import IsAvailable from './additional_components/IsAvailable.js'
 import BookUpdateButton from './additional_components/BookUpdateButton.js'
+import BooksLoader from './additional_components/BooksLoader.js'
 
 
 class BooksDetail extends React.Component {
@@ -68,7 +69,8 @@ state = {
           )
       }
       else {
-        return <h1>Loading book...</h1>
+
+        return <BooksLoader />
       }
 
     }
