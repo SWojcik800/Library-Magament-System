@@ -1,5 +1,7 @@
 import React from 'react'
-import axios from 'axios'
+import { book_update }  from './axios_requests/books_requests.js'
+import { book_load_update_form }  from './axios_requests/books_requests.js'
+
 import GoToHomepage from '../utils/GoToHomepage.js'
 import {
   Redirect
@@ -33,12 +35,7 @@ class BooksUpdate extends React.Component {
     //Loading form placeholders
     LoadFormDefaultValues = async () => {
 
-      await axios.get(this.api_url+this.pk+this.api_format,
-          {
-       headers: {
-            Authorization: 'Token 835d33ffe2959306518c6c37676c652abef4a317'
-            }
-         }
+      book_load_update_form(this.api_url+this.pk+this.api_format, this.props.token
       )
         .then(res => {
             const data  = res.data
@@ -66,12 +63,7 @@ class BooksUpdate extends React.Component {
        event.preventDefault()
          //PUT request
 
-       axios.put(this.api_url+this.pk+'/', this.state,
-         {
-         headers: {
-            Authorization: 'Token '+this.props.token
-            }
-         }
+       book_update (this.api_url+this.pk+'/', this.state, this.props.token
        )
        .then(set_redirect => {
          this.setState({ redirect: true })

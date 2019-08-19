@@ -1,22 +1,10 @@
 import React from 'react'
-import axios from 'axios'
+import { book_detail }  from './axios_requests/books_requests.js'
+
 import BooksDelete from './BooksDelete'
-import {
-  Link
-} from 'react-router-dom';
+import IsAvailable from './additional_components/IsAvailable.js'
+import BookUpdateButton from './additional_components/BookUpdateButton.js'
 
-const IsAvailable = (props) => {
-    if(props) {
-        return <p>Is available: <b>Yes</b></p>
-    }
-    else {
-        return <p>Is available: <b>No</b></p>
-    }
-
-}
-const BookUpdateButton = (pk) => {
-    return <Link to={pk.pk+'/update'} className="waves-effect waves-light btn">Update</Link>
-}
 
 class BooksDetail extends React.Component {
 state = {
@@ -34,12 +22,7 @@ state = {
       const api_format = '/?format=json'
       const pk = this.props.match.params.pk
 
-      await axios.get(api_url+pk+api_format,
-        {
-       headers: {
-            Authorization: 'Token '+this.props.token
-            }
-         },
+      book_detail(api_url+pk+api_format, this.props.token
       )
       .then(res => {
            const book = res.data
@@ -89,12 +72,7 @@ state = {
       }
 
     }
-
-
-
-
-
-    }
+   }
 }
 
 

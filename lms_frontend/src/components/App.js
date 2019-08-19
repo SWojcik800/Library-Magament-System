@@ -1,23 +1,12 @@
 import React from 'react'
 import {
   BrowserRouter as Router,
-  Redirect,
   Route
 } from 'react-router-dom';
 
 import AuthenticatedApp from './AuthenticatedApp.js'
 import Login from './content_boxes/auth/Login.js'
-
-class Logout extends React.Component {
-    constructor(props) {
-        super(props)
-        sessionStorage.clear()
-        this.props.logout_parent_callback(false)
-    }
-    render() {
-        return(<Redirect to='/' />)
-    }
-}
+import Logout from './content_boxes/auth/Logout.js'
 
 
 class App extends React.Component {
@@ -67,10 +56,5 @@ class App extends React.Component {
 
     }
 }
-
-
-
-
-
 
 export default App;

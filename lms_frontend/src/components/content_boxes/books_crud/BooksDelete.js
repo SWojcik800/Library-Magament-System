@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import { book_delete }  from './axios_requests/books_requests.js'
 
 import {
   Redirect
@@ -16,13 +16,7 @@ state = {
       handleClick = () => {
         const api_url = 'http://localhost:8000/books/'
         const pk = this.props.url
-        axios.delete(api_url+pk,
-            {
-            headers: {
-            Authorization: 'Token '+this.props.token
-            }
-         }
-        )
+        book_delete(api_url+pk, this.props.token)
         .then(redirect => this.setState({
             redirect: true
         }))

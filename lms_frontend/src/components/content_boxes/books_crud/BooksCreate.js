@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import { book_create }  from './axios_requests/books_requests.js'
 import GoToHomepage from '../utils/GoToHomepage.js'
 import {
   Redirect
@@ -30,20 +30,12 @@ class BooksCreate extends React.Component {
 
     handleSubmit(event) {
        event.preventDefault()
-       console.log(this.state)
-         //POST request
-       const books_api_url = 'http://localhost:8000/books/'
-       console.log(this.props.token)
-       axios.post(books_api_url, this.state,
-       {
-       headers: {
-            Authorization: 'Token '+this.props.token
-            }
-         },
 
-       )
+       const books_api_url = 'http://localhost:8000/books/'
+
+       //POST request
+       book_create(books_api_url, this.state, this.props.token)
        .then(res => {
-         console.log(res)
          const pk = res.data.pk
          this.setState({ pk })
        })
@@ -53,6 +45,7 @@ class BooksCreate extends React.Component {
        .catch(set_error => {
          this.setState({ error: true })
        })
+
     }
 
     render() {

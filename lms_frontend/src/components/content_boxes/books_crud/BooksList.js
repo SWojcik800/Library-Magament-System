@@ -1,23 +1,13 @@
 import React from 'react'
-import axios from 'axios'
+import { book_list }  from './axios_requests/books_requests.js'
 
 import {
   Link
 } from 'react-router-dom';
 
-//Book is_available component
-const IsAvailable = (props) => {
-    if(props) {
-        return <p>Is available: <b>Yes</b></p>
-    }
-    else {
-        return <p>Is available: <b>No</b></p>
-    }
+import IsAvailable from './additional_components/IsAvailable.js'
+import NoBooks from './additional_components/NoBooks.js'
 
-}
-
-//No books alert
-const NoBooks = () => <p>No books to display</p>
 
 class BooksList extends React.Component {
     state = {
@@ -33,13 +23,10 @@ class BooksList extends React.Component {
 
       //Getting books list from API
     getAllBooks = async () => {
-      console.log(this.props.token)
-     await axios.get(this.api_url+'?format=json', {headers: {
-        Authorization: 'Token '+this.props.token
-     }}
+
+     book_list(this.api_url+'?format=json', this.props.token
      )
       .then(res => {
-          console.log(res)
           const books = res.data
           this.setState({ books })
       })
@@ -48,7 +35,6 @@ class BooksList extends React.Component {
       })
       .catch(setError => {
         this.setState({ error: true })
-        console.log(setError)
       })
     }
 
