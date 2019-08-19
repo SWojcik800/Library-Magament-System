@@ -64,13 +64,14 @@ class BooksCreate extends React.Component {
             <hr />
               <form onSubmit={this.handleSubmit} >
                   <label for="title">Title</label>
-                  <input type="text" name="title" className="validate" onChange={this.handleChange} />
+
+                  <input type="text" name="title" className="validate" className="white-text" onChange={this.handleChange} />
 
                   <label for="author">Author</label>
-                  <input type="text" name="author" className="validate" onChange={this.handleChange} />
+                  <input type="text" name="author" className="validate" className="white-text" onChange={this.handleChange} />
 
                   <label for="borrowed_by">Borrowed by</label>
-                  <input type="text" name="borrowed_by" className="validate" onChange={this.handleChange} />
+                  <input type="text" name="borrowed_by" className="validate" className="white-text" onChange={this.handleChange} />
 
                   <button type="submit" className="#4caf50 green btn" >Create</button>
                   &nbsp;

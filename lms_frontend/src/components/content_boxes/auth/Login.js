@@ -55,15 +55,27 @@ class Login extends React.Component {
     }
         return(
           <>
-          <h1>Log in</h1>
-          <hr />
-            <form onSubmit={this.handleSubmit} >
-                <input type="text" name="username" placeholder="Username" onChange={this.handleChange} />
-                <input type="password" name="password" placeholder="Password" onChange={this.handleChange} />
-                <button type="submit" className="waves-effect waves-light btn">Log in</button>
-            </form>
-            {this.state.error}
-            <br/>
+          <div class="row">
+            <div class="col s12 m12">
+              <div class="card-panel #3d5afe indigo accent-3">
+                <span class="white-text">
+                         <h1 className="text-center">Log in</h1>
+                  <hr />
+                    <form onSubmit={this.handleSubmit} >
+                        <input type="text" name="username" placeholder="Username" className="white-text" onChange={this.handleChange} />
+                        <input type="password" name="password" placeholder="Password" className="white-text" onChange={this.handleChange} />
+                        <button type="submit" className="waves-effect waves-light btn">Log in</button>
+                    </form>
+                    {this.state.error}
+                <br/>
+                <br />
+                Made by <a href='https://github.com/LDVES' className="center-text">LDVES</a> &copy; 2019
+                </span>
+              </div>
+            </div>
+          </div>
+            <br />
+            <br />
           </>
 
       )

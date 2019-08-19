@@ -1,5 +1,6 @@
 import React from 'react'
 import { book_list }  from './axios_requests/books_requests.js'
+import BooksLoader from './additional_components/BooksLoader.js'
 
 import {
   Link
@@ -75,7 +76,7 @@ class BooksList extends React.Component {
          }
 
       else {
-        return(<h1>Loading books...</h1>)
+        return <BooksLoader />
       }
 
 
