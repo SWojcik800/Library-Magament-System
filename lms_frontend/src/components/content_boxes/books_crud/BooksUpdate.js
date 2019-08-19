@@ -86,9 +86,11 @@ class BooksUpdate extends React.Component {
           <h1>Update book</h1>
           <hr />
             <form onSubmit={this.handleSubmit} >
+
                 <input type="text" name="title" className="validate white-text" value={this.state.title} placeholder='Title' onChange={this.handleChange} />
                 <input type="text" name="author" className="validate white-text" value={this.state.author}  placeholder='Author' onChange={this.handleChange} />
                 <input type="text" name="borrowed_by" className="validate white-text" value={this.state.borrowed_by}  placeholder='Borrowed by' onChange={this.handleChange} />
+
                 <button type="submit" className="waves-effect waves-light btn">Update</button>
                 &nbsp;
                 <GoToHomepage />

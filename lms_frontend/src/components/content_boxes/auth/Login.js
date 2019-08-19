@@ -55,7 +55,6 @@ class Login extends React.Component {
     }
         return(
           <>
-
           <div class="row">
             <div class="col s12 m12">
               <div class="card-panel #3d5afe indigo accent-3">
@@ -77,8 +76,6 @@ class Login extends React.Component {
           </div>
             <br />
             <br />
-
-
           </>
 
       )

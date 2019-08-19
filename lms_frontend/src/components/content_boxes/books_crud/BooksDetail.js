@@ -7,6 +7,7 @@ import BookUpdateButton from './additional_components/BookUpdateButton.js'
 import BooksLoader from './additional_components/BooksLoader.js'
 
 
+
 class BooksDetail extends React.Component {
 state = {
     book: []
@@ -69,7 +70,6 @@ state = {
           )
       }
       else {
-
         return <BooksLoader />
       }
 

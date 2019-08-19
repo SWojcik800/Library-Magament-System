@@ -64,6 +64,7 @@ class BooksCreate extends React.Component {
             <hr />
               <form onSubmit={this.handleSubmit} >
                   <label for="title">Title</label>
+
                   <input type="text" name="title" className="validate" className="white-text" onChange={this.handleChange} />
 
                   <label for="author">Author</label>
