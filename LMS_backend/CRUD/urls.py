@@ -6,7 +6,6 @@ from CRUD import view_sets
 
 router = routers.DefaultRouter()
 router.register(r'books', view_sets.BookViewSet)
-router.register(r'authors', view_sets.AuthorViewSet)
 router.register(r'library_users', view_sets.LibraryUserViewSet)
 
 
